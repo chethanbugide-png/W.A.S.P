@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W.A.S.P. — Wastewater Analysis & Supervised Prediction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <div class="logo-hex">
+                    <svg width="28" height="28" viewBox="0 0 32 32"><polygon points="16,2 29,9 29,23 16,30 3,23 3,9" fill="none" stroke="currentColor" stroke-width="2"/><text x="16" y="20" text-anchor="middle" font-size="11" font-weight="800" fill="currentColor">W</text></svg>
+                </div>
+                <div class="logo-words">
+                    <span class="logo-main">W.A.S.P.</span>
+                    <span class="logo-sub">Wastewater Analysis</span>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#predict">Predict</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#methodology">How It Works</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#team">Team</a></li>
+            </ul>
+            <a href="#predict" class="nav-cta-btn">Launch Analyzer →</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-grid-overlay"></div>
+            <div class="hero-gradient-orb orb-1"></div>
+            <div class="hero-gradient-orb orb-2"></div>
+            <div class="hero-gradient-orb orb-3"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Environmental AI • Task 3 Project
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line-1">W<span class="dot">.</span>A<span class="dot">.</span>S<span class="dot">.</span>P<span class="dot">.</span></span>
+                    <span class="title-line-2">Wastewater Analysis &</span>
+                    <span class="title-line-3">Supervised <span class="highlight">Prediction</span></span>
+                </h1>
+                <p class="hero-desc">
+                    ML-powered soft-sensor that predicts BOD₅ in <strong>real time</strong> — 
+                    eliminating the 5-day lab bottleneck for wastewater treatment plants across India. 
+                    Instant classification, shock detection, and automated process control.
+                </p>
+                <div class="hero-actions">
+                    <a href="#predict" class="btn btn-glow">
+                        <span class="btn-icon">⬡</span>
+                        Analyze Water Quality
+                    </a>
+                    <a href="#about" class="btn btn-ghost">Learn More ↓</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-stats-card">
+                    <div class="stats-card-header">
+                        <span class="stats-dot green"></span>
+                        <span>Live Model Performance</span>
+                    </div>
+                    <div class="stats-card-grid">
+                        <div class="stat-cell">
+                            <span class="stat-number" data-target="99.18">0</span><span class="stat-pct">%</span>
+                            <span class="stat-label">R² Accuracy</span>
+                        </div>
+                        <div class="stat-cell">
+                            <span class="stat-number" data-target="98.33">0</span><span class="stat-pct">%</span>
+                            <span class="stat-label">Classification</span>
+                        </div>
+                        <div class="stat-cell">
+                            <span class="stat-number" data-target="600" data-decimals="0">0</span>
+                            <span class="stat-label">Records Analyzed</span>
+                        </div>
+                        <div class="stat-cell">
+                            <span class="stat-number" data-target="5" data-decimals="0">0</span>
+                            <span class="stat-label">STP/CETP Sites</span>
+                        </div>
+                    </div>
+                    <div class="stats-card-bar">
+                        <div class="stats-bar-fill"></div>
+                    </div>
+                    <div class="stats-card-footer">
+                        <span>Random Forest · 60 Trees · Depth 7</span>
+                        <span class="stats-badge">RMSE 2.84</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <svg class="hero-wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,50 1440,60 L1440,120 L0,120 Z" fill="var(--navy-light)"/>
+            <path d="M0,80 C240,40 480,100 720,80 C960,60 1200,100 1440,80 L1440,120 L0,120 Z" fill="var(--navy)" opacity="0.5"/>
+        </svg>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="about-layout">
+                <div class="about-left">
+                    <span class="section-tag">The Problem We Solve</span>
+                    <h2 class="section-title">120 Hours Is Too Long<br>to Wait for <span class="highlight">Clean Water</span></h2>
+                    <p class="about-lead">
+                        Conventional BOD₅ testing requires <strong>5 full days</strong> of laboratory incubation. 
+                        During that wait, untreated sewage flows freely into rivers, operators fly blind, 
+                        and industrial shock loads kill treatment bacteria.
+                    </p>
+                    <p class="about-body">
+                        W.A.S.P. replaces the 120-hour lab bottleneck with <em>instant</em> ML predictions 
+                        from 8 online sensor probes — enabling real-time, closed-loop process control 
+                        for STPs and CETPs across India's most polluted river basins.
+                    </p>
+                    <div class="about-metric-row">
+                        <div class="about-metric">
+                            <span class="about-metric-val">66%</span>
+                            <span class="about-metric-label">BOD₅ Reduction</span>
+                        </div>
+                        <div class="about-metric">
+                            <span class="about-metric-val">65.5%</span>
+                            <span class="about-metric-label">EPLI Drop</span>
+                        </div>
+                        <div class="about-metric">
+                            <span class="about-metric-val">&lt;1s</span>
+                            <span class="about-metric-label">Prediction Time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-right">
+                    <div class="about-card-stack">
+                        <div class="about-card ac-problem">
+                            <div class="ac-icon">🔬</div>
+                            <div class="ac-content">
+                                <h3>The Bottleneck</h3>
+                                <p>BOD₅ requires 120 hours of wet-lab incubation at 20°C. Operators cannot adjust aeration or chemical dosing during organic shock loads.</p>
+                            </div>
+                        </div>
+                        <div class="about-card ac-solution">
+                            <div class="ac-icon">🤖</div>
+                            <div class="ac-content">
+                                <h3>ML Soft-Sensor</h3>
+                                <p>Random Forest (60 trees) predicts BOD₅ instantly from DO, COD, pH, Turbidity, TSS, NH₃-N, Conductivity & Temperature.</p>
+                            </div>
+                        </div>
+                        <div class="about-card ac-impact">
+                            <div class="ac-icon">🌊</div>
+                            <div class="ac-content">
+                                <h3>Real-Time Control</h3>
+                                <p>Automated process-control matrix triggers aeration boosting, PAC dosing, or influent diversion within seconds of detection.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PREDICTION TOOL ===== -->
+    <section class="section section-predict" id="predict">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-tag">Interactive Analyzer</span>
+                <h2 class="section-title">Water Quality <span class="highlight">Prediction Engine</span></h2>
+                <p class="section-desc">Enter sensor readings → get instant BOD₅ prediction, CPCB classification, EPLI score, shock detection, tertiary simulation & treatment actions.</p>
+            </div>
+
+            <div class="predict-layout">
+                <!-- INPUT PANEL -->
+                <div class="predict-input-panel">
+                    <div class="panel-header">
+                        <div class="panel-dots"><span class="pd red"></span><span class="pd yellow"></span><span class="pd green"></span></div>
+                        <span class="panel-title">wasp_soft_sensor.py</span>
+                        <div class="panel-controls">
+                            <label class="live-toggle" title="Auto-update predictions as you adjust sliders">
+                                <input type="checkbox" id="liveToggle" checked>
+                                <span class="live-slider"></span>
+                                <span class="live-text">Live</span>
+                            </label>
+                            <button type="button" class="btn-reset" id="btnReset" title="Clear all inputs">Reset</button>
+                        </div>
+                    </div>
+
+                    <div class="input-section">
+                        <div class="station-row">
+                            <div class="station-select-wrap">
+                                <label class="input-section-label" for="plantSelect">Monitoring Station Preset</label>
+                                <select id="plantSelect">
+                                    <option value="custom">— Custom Sensor Input —</option>
+                                    <option value="trichy">📍 Tiruchirappalli — Panchapur STP</option>
+                                    <option value="chennai" selected>📍 Chennai — Nesapakkam STP</option>
+                                    <option value="hyderabad">📍 Hyderabad — Amberpet STP</option>
+                                    <option value="bengaluru">📍 Bengaluru — Bellandur STP</option>
+                                    <option value="vellore">📍 Vellore — Ranipet Tannery CETP</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preset-row">
+                        <span class="preset-label">Scenarios:</span>
+                        <button type="button" class="btn-chip" data-preset="clean">✅ Clean</button>
+                        <button type="button" class="btn-chip" data-preset="polluted">⚠️ Polluted</button>
+                        <button type="button" class="btn-chip" data-preset="highly_polluted">🔴 Critical</button>
+                        <button type="button" class="btn-chip" data-preset="shock">💀 Shock Event</button>
+                    </div>
+
+                    <div class="input-section input-params-wrap">
+                        <label class="input-section-label">Online Probe Telemetry (8 Inputs)</label>
+                        <div class="input-grid">
+                            <div class="input-field" data-param="DO">
+                                <div class="field-header">
+                                    <span class="field-name"><span class="field-status-dot" id="dotDO"></span>💧 DO</span>
+                                    <span class="field-unit">mg/L</span>
+                                </div>
+                                <input type="number" id="inputDO" placeholder="5.62" step="0.01" min="0" max="15">
+                                <input type="range" class="param-slider" id="sliderDO" min="0" max="12" step="0.05" aria-label="Dissolved Oxygen slider">
+                                <div class="field-meta">
+                                    <span class="field-threshold">Safe ≥ 5.0</span>
+                                    <span class="field-badge" id="tagDO">—</span>
+                                </div>
+                            </div>
+
+                            <div class="input-field" data-param="COD">
+                                <div class="field-header">
+                                    <span class="field-name"><span class="field-status-dot" id="dotCOD"></span>⚗️ COD</span>
+                                    <span class="field-unit">mg/L</span>
+                                </div>
+                                <input type="number" id="inputCOD" placeholder="58.24" step="0.1" min="0" max="600">
+                                <input type="range" class="param-slider" id="sliderCOD" min="0" max="450" step="1" aria-label="COD slider">
+                                <div class="field-meta">
+                                    <span class="field-threshold">Safe ≤ 50</span>
+                                    <span class="field-badge" id="tagCOD">—</span>
+                                </div>
+                            </div>
+
+                            <div class="input-field" data-param="pH">
+                                <div class="field-header">
+                                    <span class="field-name"><span class="field-status-dot" id="dotpH"></span>🧪 pH</span>
+                                    <span class="field-unit">scale</span>
+                                </div>
+                                <input type="number" id="inputpH" placeholder="7.37" step="0.01" min="0" max="14">
+                                <input type="range" class="param-slider" id="sliderpH" min="4" max="11" step="0.05" aria-label="pH slider">
+                                <div class="field-meta">
+                                    <span class="field-threshold">Safe 6.5–8.5</span>
+                                    <span class="field-badge" id="tagpH">—</span>
+                                </div>
+                            </div>
+
+                            <div class="input-field" data-param="Turb">
+                                <div class="field-header">
+                                    <span class="field-name"><span class="field-status-dot" id="dotTurb"></span>🌫️ Turbidity</span>
+                                    <span class="field-unit">NTU</span>
+                                </div>
+                                <input type="number" id="inputTurb" placeholder="12.68" step="0.1" min="0" max="200">
+                                <input type="range" class="param-slider" id="sliderTurb" min="0" max="120" step="0.5" aria-label="Turbidity slider">
+                                <div class="field-meta">
+                                    <span class="field-threshold">Safe ≤ 10</span>
+                                    <span class="field-badge" id="tagTurb">—</span>
+                                </div>
+                            </div>
+
+                            <div class="input-field" data-param="TSS">
+                                <div class="field-header">
+                                    <span class="field-name"><span class="field-status-dot" id="dotTSS"></span>🪨 TSS</span>
+                                    <span class="field-unit">mg/L</span>
+                                </div>
+                                <input type="number" id="inputTSS" placeholder="35.0" step="0.5" min="0" max="400">
+                                <input type="range" class="param-slider" id="sliderTSS" min="0" max="220" step="1" aria-label="TSS slider">
+                                <div class="field-meta">
+                                    <span class="field-threshold">Safe ≤ 20</span>
+                                    <span class="field-badge" id="tagTSS">—</span>
+                                </div>
+                            </div>
+
+                            <div class="input-field" data-param="NH3">
+                                <div class="field-header">
+                                    <span class="field-name"><span class="field-status-dot" id="dotNH3"></span>🧬 NH₃-N</span>
+                                    <span class="field-unit">mg/L</span>
+                                </div>
+                                <input type="number" id="inputNH3" placeholder="5.2" step="0.1" min="0" max="60">
+                                <input type="range" class="param-slider" id="sliderNH3" min="0" max="45" step="0.2" aria-label="Ammoniacal Nitrogen slider">
+                                <div class="field-meta">
+                                    <span class="field-threshold">Target ≤ 5.0</span>
+                                    <span class="field-badge" id="tagNH3">—</span>
+                                </div>
+                            </div>
+
+                            <div class="input-field" data-param="EC">
+                                <div class="field-header">
+                                    <span class="field-name"><span class="field-status-dot" id="dotEC"></span>⚡ Conductivity</span>
+                                    <span class="field-unit">µS/cm</span>
+                                </div>
+                                <input type="number" id="inputEC" placeholder="780" step="5" min="0" max="5000">
+                                <input type="range" class="param-slider" id="sliderEC" min="100" max="3000" step="10" aria-label="Conductivity slider">
+                                <div class="field-meta">
+                                    <span class="field-threshold">200–2000</span>
+                                    <span class="field-badge" id="tagEC">—</span>
+                                </div>
+                            </div>
+
+                            <div class="input-field" data-param="Temp">
+                                <div class="field-header">
+                                    <span class="field-name"><span class="field-status-dot" id="dotTemp"></span>🌡️ Temp</span>
+                                    <span class="field-unit">°C</span>
+                                </div>
+                                <input type="number" id="inputTemp" placeholder="29.0" step="0.1" min="0" max="50">
+                                <input type="range" class="param-slider" id="sliderTemp" min="10" max="45" step="0.5" aria-label="Temperature slider">
+                                <div class="field-meta">
+                                    <span class="field-threshold">20–35 °C</span>
+                                    <span class="field-badge" id="tagTemp">—</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-actions">
+                        <button type="button" class="btn btn-glow btn-full" id="btnAnalyze">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                            Run Soft-Sensor Analysis
+                        </button>
+                    </div>
+                </div>
+
+                <!-- OUTPUT PANEL -->
+                <div class="predict-output-panel" id="outputPanel">
+                    <!-- Placeholder -->
+                    <div class="output-empty" id="outputPlaceholder" style="display:none;">
+                        <div class="empty-visual">
+                            <div class="empty-ring"></div>
+                            <div class="empty-icon">⬡</div>
+                        </div>
+                        <h3>Awaiting Sensor Telemetry</h3>
+                        <p>Adjust any slider, choose a monitoring station, or pick a scenario preset to inspect live predictions.</p>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="output-results" id="outputResults">
+
+                        <!-- BOD5 Hero Gauge + Classification -->
+                        <div class="result-gauge-card" id="resultBOD">
+                            <div class="gauge-top-bar">
+                                <span class="gauge-model">Random Forest Soft-Sensor · R² = 0.9918</span>
+                                <span class="cpcb-limit-pill" id="cpcbLimitPill">CPCB STP Limit ≤ 10 mg/L</span>
+                            </div>
+
+                            <div class="gauge-hero-flex">
+                                <div class="gauge-wrap">
+                                    <svg class="gauge-svg" viewBox="0 0 220 130">
+                                        <defs>
+                                            <filter id="gaugeGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                            </filter>
+                                        </defs>
+                                        <path d="M25,108 A85,85 0 0,1 195,108" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="12" stroke-linecap="round"/>
+                                        <path class="gauge-arc" id="gaugeArc" d="M25,108 A85,85 0 0,1 195,108" fill="none" stroke="var(--pink)" stroke-width="12" stroke-linecap="round" stroke-dasharray="267.04" stroke-dashoffset="267.04" filter="url(#gaugeGlow)"/>
+                                        <text x="18" y="124" class="gauge-tick">0</text>
+                                        <text x="54" y="42" class="gauge-tick">30</text>
+                                        <text x="110" y="16" class="gauge-tick" text-anchor="middle">60</text>
+                                        <text x="166" y="42" class="gauge-tick" text-anchor="end">90</text>
+                                        <text x="202" y="124" class="gauge-tick" text-anchor="end">120+</text>
+                                    </svg>
+                                    <div class="gauge-center">
+                                        <span class="gauge-value" id="resultBODValue">—</span>
+                                        <span class="gauge-unit">mg/L BOD₅</span>
+                                    </div>
+                                </div>
+
+                                <div class="gauge-class-side" id="resultClass">
+                                    <div class="class-badge-big" id="classBadge">—</div>
+                                    <span class="class-tier" id="classTier">—</span>
+                                    <p class="class-desc" id="classDesc">—</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Triple Telemetry Row: EPLI + D² + COD/BOD Ratio -->
+                        <div class="result-triple-row">
+                            <div class="dual-card">
+                                <div class="dual-header">
+                                    <span>EPLI Index</span>
+                                    <span class="dual-value" id="epliValue">—</span>
+                                </div>
+                                <div class="dual-bar-track"><div class="dual-bar-fill" id="epliBar"></div></div>
+                                <div class="dual-scale"><span>0</span><span>Low</span><span>Mid</span><span>High</span><span>Crit</span></div>
+                            </div>
+
+                            <div class="dual-card" id="anomalyCard">
+                                <div class="dual-header">
+                                    <span>Mahalanobis D²</span>
+                                    <span class="dual-value" id="anomalyScore">—</span>
+                                </div>
+                                <div class="anomaly-indicator" id="anomalyIndicator">
+                                    <span class="anomaly-dot" id="anomalyDot"></span>
+                                    <span id="anomalyLabel">—</span>
+                                </div>
+                                <div class="dual-note">Shock cutoff: D² ≥ 22.0</div>
+                            </div>
+
+                            <div class="dual-card">
+                                <div class="dual-header">
+                                    <span>COD / BOD₅</span>
+                                    <span class="dual-value" id="ratioValue">—</span>
+                                </div>
+                                <div class="ratio-pill" id="ratioLabel">—</div>
+                                <div class="dual-note">Refractory if &gt; 2.6</div>
+                            </div>
+                        </div>
+
+                        <!-- Parameter Health Check -->
+                        <div class="result-params-card">
+                            <div class="rp-top">
+                                <span class="rp-header">9-Parameter CPCB Compliance Matrix</span>
+                                <span class="rp-legend"><i class="lg safe"></i>Safe <i class="lg warn"></i>Warn <i class="lg danger"></i>High</span>
+                            </div>
+                            <div class="rp-grid" id="paramStatusGrid"></div>
+                        </div>
+
+                        <!-- Tertiary Upgrade Comparison -->
+                        <div class="result-upgrade-card" id="upgradeCard">
+                            <div class="upgrade-header">
+                                <span>🔧 Tertiary Treatment Impact</span>
+                                <span class="upgrade-badge">MBBR + PAC-UF + Ozonation</span>
+                            </div>
+
+                            <div class="upgrade-bars" id="upgradeBars">
+                                <!-- Populated dynamically -->
+                            </div>
+
+                            <div class="upgrade-summary-strip">
+                                <div class="us-item">
+                                    <span class="us-label">BOD₅ Drop</span>
+                                    <span class="us-val green" id="upgradeReduction">—</span>
+                                </div>
+                                <div class="us-item">
+                                    <span class="us-label">Post-Upgrade BOD₅</span>
+                                    <span class="us-val" id="postBOD">—</span>
+                                </div>
+                                <div class="us-item">
+                                    <span class="us-label">Projected Class</span>
+                                    <span class="us-val" id="upgradePostClass">—</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Process-Control Actions + Copy Log -->
+                        <div class="result-actions-card" id="actionCard">
+                            <div class="rac-top">
+                                <span class="rac-header">📋 Automated Process-Control Matrix</span>
+                                <button type="button" class="btn-copy-log" id="btnCopyLog">Copy Report</button>
+                            </div>
+                            <div class="rac-content" id="actionContent">—</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES (Bento Grid) ===== -->
+    <section class="section section-dark" id="features">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="section-title">Four Integrated <span class="highlight">Modules</span></h2>
+            </div>
+            <div class="bento-grid">
+                <div class="bento-card bento-large">
+                    <div class="bento-num">01</div>
+                    <div class="bento-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 5-9"/></svg></div>
+                    <h3>BOD₅ Soft-Sensor</h3>
+                    <p>Real-time prediction of 5-day Biochemical Oxygen Demand from online sensor probes. Random Forest (60 trees, depth 7) achieves R² = 0.9918, RMSE = 2.84 mg/L, MAE = 2.01 mg/L.</p>
+                    <div class="bento-tags"><span>Random Forest</span><span>Gradient Boosting</span><span>Ridge</span><span>OLS</span></div>
+                </div>
+                <div class="bento-card">
+                    <div class="bento-num">02</div>
+                    <div class="bento-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg></div>
+                    <h3>Water-Quality Classifier</h3>
+                    <p>3-tier supervised classification — Acceptable, Polluted, Highly Polluted — with 98.33% accuracy and 0.9844 Macro F1.</p>
+                    <div class="bento-tags"><span>3-Class</span><span>CPCB Standards</span></div>
+                </div>
+                <div class="bento-card">
+                    <div class="bento-num">03</div>
+                    <div class="bento-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg></div>
+                    <h3>Shock Detection</h3>
+                    <p>Mahalanobis D² anomaly detector flags industrial discharge events. 100% recall, 94.12% precision, F1 = 0.9697.</p>
+                    <div class="bento-tags"><span>Mahalanobis D²</span><span>Real-time</span></div>
+                </div>
+                <div class="bento-card bento-wide">
+                    <div class="bento-num">04</div>
+                    <div class="bento-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                    <h3>Abatement Simulator</h3>
+                    <p>Three-stage tertiary treatment upgrade simulation — MBBR + PAC Coagulation-UF + Ozonation — reduces mean BOD₅ by 66.00% and EPLI by 65.46% across 5 STP/CETP corridors.</p>
+                    <div class="bento-tags"><span>MBBR</span><span>Ultrafiltration</span><span>Ozonation</span><span>Process Control</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== METHODOLOGY ===== -->
+    <section class="section" id="methodology">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-tag">Pipeline</span>
+                <h2 class="section-title">How <span class="highlight">W.A.S.P.</span> Works</h2>
+                <p class="section-desc">From raw sensor data to actionable treatment decisions in under one second.</p>
+            </div>
+
+            <!-- Horizontal Timeline -->
+            <div class="timeline">
+                <div class="timeline-track"></div>
+                <div class="timeline-step">
+                    <div class="ts-dot"></div>
+                    <div class="ts-card">
+                        <span class="ts-num">01</span>
+                        <h4>Data Collection</h4>
+                        <p>600 daily records from 5 CPCB STP/CETP corridors. 9 physico-chemical parameters per sample.</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="ts-dot"></div>
+                    <div class="ts-card">
+                        <span class="ts-num">02</span>
+                        <h4>Preprocessing</h4>
+                        <p>Plant-stratified median imputation for 120 missing sensor entries. Z-score standardization.</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="ts-dot"></div>
+                    <div class="ts-card">
+                        <span class="ts-num">03</span>
+                        <h4>EPLI Indexing</h4>
+                        <p>Composite Effluent Pollution Load Index from BOD₅, COD, TSS, and DO deviations.</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="ts-dot"></div>
+                    <div class="ts-card">
+                        <span class="ts-num">04</span>
+                        <h4>Model Training</h4>
+                        <p>OLS, Ridge, Gradient Boosting & Random Forest on 80/20 stratified split (480/120).</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="ts-dot"></div>
+                    <div class="ts-card">
+                        <span class="ts-num">05</span>
+                        <h4>Predict & Control</h4>
+                        <p>Instant BOD₅ prediction, 3-tier classification, shock alerts & automated process actions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parameters Ribbon -->
+            <div class="params-ribbon">
+                <div class="params-ribbon-label">9 Monitored Parameters</div>
+                <div class="params-ribbon-chips">
+                    <span class="pr-chip"><b>DO</b> Dissolved Oxygen</span>
+                    <span class="pr-chip"><b>BOD₅</b> Biochemical O₂ Demand</span>
+                    <span class="pr-chip"><b>COD</b> Chemical O₂ Demand</span>
+                    <span class="pr-chip"><b>pH</b> Acidity / Alkalinity</span>
+                    <span class="pr-chip"><b>Turb</b> Turbidity (NTU)</span>
+                    <span class="pr-chip"><b>TSS</b> Total Suspended Solids</span>
+                    <span class="pr-chip"><b>NH₃-N</b> Ammoniacal Nitrogen</span>
+                    <span class="pr-chip"><b>EC</b> Conductivity</span>
+                    <span class="pr-chip"><b>Temp</b> Water Temperature</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESULTS ===== -->
+    <section class="section section-dark" id="results">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-tag">Performance</span>
+                <h2 class="section-title">Results & <span class="highlight">Metrics</span></h2>
+                <p class="section-desc">Validated on 120 stratified test samples across 5 treatment plant corridors.</p>
+            </div>
+
+            <!-- Model Comparison -->
+            <div class="table-card">
+                <div class="tc-header">
+                    <span>Model Benchmark Comparison</span>
+                    <span class="tc-badge">N_test = 120</span>
+                </div>
+                <table class="model-table">
+                    <thead><tr><th>Model</th><th>R²</th><th>RMSE (mg/L)</th><th>MAE (mg/L)</th><th>MAPE</th></tr></thead>
+                    <tbody>
+                        <tr><td>OLS Linear Regression</td><td>0.9791</td><td>4.54</td><td>3.57</td><td>14.83%</td></tr>
+                        <tr><td>Ridge Regression (L2, α=8)</td><td>0.9797</td><td>4.47</td><td>3.60</td><td>15.24%</td></tr>
+                        <tr><td>Gradient Boosting (75 trees)</td><td>0.9822</td><td>4.19</td><td>2.28</td><td>6.19%</td></tr>
+                        <tr class="row-best"><td><span class="best-pill">★ Best</span>Random Forest (60 trees)</td><td><strong>0.9918</strong></td><td><strong>2.84</strong></td><td><strong>2.01</strong></td><td><strong>5.85%</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Metric Ring Cards -->
+            <div class="ring-grid">
+                <div class="ring-card">
+                    <div class="ring-visual">
+                        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="6"/><circle cx="50" cy="50" r="42" fill="none" stroke="var(--pink)" stroke-width="6" stroke-dasharray="263.89" stroke-dashoffset="21.6" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg>
+                        <span class="ring-val">0.9918</span>
+                    </div>
+                    <h4>R² Score</h4>
+                    <p>BOD₅ Regression</p>
+                </div>
+                <div class="ring-card">
+                    <div class="ring-visual">
+                        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="6"/><circle cx="50" cy="50" r="42" fill="none" stroke="#22c55e" stroke-width="6" stroke-dasharray="263.89" stroke-dashoffset="4.4" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg>
+                        <span class="ring-val">98.33%</span>
+                    </div>
+                    <h4>Accuracy</h4>
+                    <p>3-Class WQ Classifier</p>
+                </div>
+                <div class="ring-card">
+                    <div class="ring-visual">
+                        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="6"/><circle cx="50" cy="50" r="42" fill="none" stroke="#818cf8" stroke-width="6" stroke-dasharray="263.89" stroke-dashoffset="8.0" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg>
+                        <span class="ring-val">0.9697</span>
+                    </div>
+                    <h4>F1 Score</h4>
+                    <p>Shock Detection</p>
+                </div>
+                <div class="ring-card">
+                    <div class="ring-visual">
+                        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="6"/><circle cx="50" cy="50" r="42" fill="none" stroke="#f59e0b" stroke-width="6" stroke-dasharray="263.89" stroke-dashoffset="89.7" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg>
+                        <span class="ring-val">66.0%</span>
+                    </div>
+                    <h4>BOD₅ Drop</h4>
+                    <p>Tertiary Upgrade</p>
+                </div>
+            </div>
+
+            <!-- Feature Attribution -->
+            <div class="attribution-card">
+                <div class="attrib-header">Feature Attribution — Top 5 (84.21% of Variance)</div>
+                <div class="attrib-bars">
+                    <div class="ab-row"><span class="ab-name">COD</span><div class="ab-track"><div class="ab-fill" style="--w:100%"></div></div><span class="ab-val">27.88%</span></div>
+                    <div class="ab-row"><span class="ab-name">DO</span><div class="ab-track"><div class="ab-fill" style="--w:74.3%"></div></div><span class="ab-val">20.72%</span></div>
+                    <div class="ab-row"><span class="ab-name">Turbidity</span><div class="ab-track"><div class="ab-fill" style="--w:48.1%"></div></div><span class="ab-val">13.42%</span></div>
+                    <div class="ab-row"><span class="ab-name">Conductivity</span><div class="ab-track"><div class="ab-fill" style="--w:40.2%"></div></div><span class="ab-val">11.20%</span></div>
+                    <div class="ab-row"><span class="ab-name">NH₃-N</span><div class="ab-track"><div class="ab-fill" style="--w:39.4%"></div></div><span class="ab-val">10.99%</span></div>
+                </div>
+            </div>
+
+            <!-- Sites -->
+            <div class="sites-row">
+                <div class="site-pill">📍 Tiruchirappalli <span>Panchapur STP</span></div>
+                <div class="site-pill">📍 Chennai <span>Nesapakkam STP</span></div>
+                <div class="site-pill">📍 Hyderabad <span>Amberpet STP</span></div>
+                <div class="site-pill">📍 Bengaluru <span>Bellandur STP</span></div>
+                <div class="site-pill">📍 Vellore <span>Ranipet CETP</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TEAM ===== -->
+    <section class="section" id="team">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-tag">Our Team</span>
+                <h2 class="section-title">Built By</h2>
+                <p class="section-desc">Department of CSE, SRM Institute of Science and Technology, Tiruchirappalli</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="tc-glow"></div>
+                    <div class="tc-avatar">SC</div>
+                    <h3>B. Sai Chethan</h3>
+                    <span class="tc-id">RA2411026050043</span>
+                    <p>Dataset curation, plant-stratified imputation, EPLI formulation & spatio-temporal water-quality visualizations.</p>
+                </div>
+                <div class="team-card">
+                    <div class="tc-glow"></div>
+                    <div class="tc-avatar">SN</div>
+                    <h3>B. Sai Nikhil</h3>
+                    <span class="tc-id">RA2411026050036</span>
+                    <p>Supervised ML soft-sensor — OLS, Ridge, Random Forest & Gradient Boosting for BOD₅ prediction & 3-tier classification.</p>
+                </div>
+                <div class="team-card">
+                    <div class="tc-glow"></div>
+                    <div class="tc-avatar">GK</div>
+                    <h3>G. Kalyan</h3>
+                    <span class="tc-id">RA2411026050027</span>
+                    <p>Mahalanobis D² anomaly detection, tertiary treatment upgrade simulation & automated process-control engine.</p>
+                </div>
+            </div>
+            <div class="advisor-bar">
+                <span class="advisor-label">Under the Guidance of</span>
+                <span class="advisor-name">Dr. B. Ujjwala</span>
+                <span class="advisor-role">Assistant Professor, School of Computing, SRMIST Tiruchirappalli</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <svg width="20" height="20" viewBox="0 0 32 32"><polygon points="16,2 29,9 29,23 16,30 3,23 3,9" fill="none" stroke="var(--pink)" stroke-width="2"/><text x="16" y="20" text-anchor="middle" font-size="11" font-weight="800" fill="var(--pink)">W</text></svg>
+                        <span>W.A.S.P.</span>
+                    </div>
+                    <p>Wastewater Analysis & Supervised Prediction</p>
+                </div>
+                <div class="footer-right">
+                    <p>© 2026 W.A.S.P. — SRM Institute of Science and Technology, Tiruchirappalli</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
